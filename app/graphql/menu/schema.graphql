@@ -1,0 +1,31 @@
+type Menu {
+  id: String!
+  name: String!
+  categories(limit: Int, page: Int, orderBy: String, desc: Boolean): [Category]
+  # items(limit: Int, page: Int, orderBy: String, desc: Boolean): [Item]
+}
+
+type Query {
+  menu(id: String!): Menu
+  menus(name: String!, limit: Int, page: Int, orderBy: String, desc: Boolean): [Menu]
+}
+
+type Mutation {
+  createMenu (
+    name: String!
+  ): Menu
+
+  assignCateogry (
+    menuId: String!
+    categoryId: String!
+  ): Menu
+
+  updateMenu (
+    id: String!
+    name: String
+  ): Menu
+
+  removeMenu (
+    id: String!
+  ): Menu
+}

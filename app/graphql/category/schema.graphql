@@ -1,0 +1,33 @@
+type Category {
+  id: String!
+  name: String!
+  position: Int
+  items(limit: Int, page: Int, orderBy: String, desc: Boolean): [Item]
+}
+
+type Query {
+  category(id: String!): Category
+  categories(name: String!, limit: Int, page: Int, orderBy: String, desc: Boolean): [Category]
+}
+
+type Mutation {
+  createCategory (
+    name: String!
+    position: Int
+  ): Category
+
+  updateCategory (
+    id: String!
+    name: String!
+    position: Int
+  ): Menu
+
+  removeCategory (
+    id: String!
+  ): Menu
+
+  assignItem (
+    categoryId: String!
+    itemId: String!
+  ): Menu
+}

@@ -1,0 +1,36 @@
+type Item {
+  id: String!
+  name: String!
+  description: String
+  price: Float
+  isAlcohol: Boolean
+  position: Int
+}
+
+type Query {
+  item(id: String!): Item
+  items(name: String!, limit: Int, page: Int, orderBy: String, desc: Boolean): [Item]
+}
+
+type Mutation {
+  createItem (
+    name: String!
+    description: String
+    price: Float
+    isAlcohol: Boolean
+    position: Int
+  ): Item
+
+  updateItem (
+    id: String!
+    name: String
+    description: String
+    price: Float
+    isAlcohol: Boolean
+    position: Int
+  ): Item
+
+  removeItem (
+    id: String!
+  ): Item
+}
