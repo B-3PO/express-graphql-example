@@ -42,7 +42,6 @@ exports.findOne = (db, id) => new Promise((resolve, reject) => {
 });
 
 exports.find = (db, { page, limit, orderBy, desc, ...rest}) => new Promise((resolve, reject) => {
-  console.log({ page, limit, orderBy, desc }, rest);
   const f = db.find(rest);
   if (page !== undefined) f.skip((page - 1) * limit);
   if (limit !== undefined) f.limit(limit);
